@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Close Connect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      color: #f0f0f0;
+      background: #111;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 0;
+    }
+
+    /* Cinematic animated background image */
+    body::before {
+      content: "";
+      background: url('homes.jpg') no-repeat center center;
+      background-size: cover;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.25;
+      z-index: -2;
+      animation: cinematicPanZoom 60s ease-in-out infinite alternate;
+      transform-origin: center;
+      filter: blur(2px);
+    }
+
+    /* Radial dark overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes cinematicPanZoom {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.1) translate(-2%, -2%); }
+    }
+
+    nav.navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      background-color: #e2e2e2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1rem 2rem;
+      gap: 0.5rem;
+      box-sizing: border-box;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+      justify-content: flex-end;
+      max-width: 100%;
+    }
+
+    .nav-links a {
+      color: #112a64;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #FDBB30;
+    }
+
+    .logo img {
+      height: 40px;
+      cursor: pointer;
+    }
+
+    .hero-logo {
+      min-height: 100vh;
+      padding: 4rem 1rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+    }
+
+    .rotating-container { perspective: 1000px; }
+
+    .rotating-shiny {
+      width: 280px;
+      max-width: 80%;
+      animation: rotateYLogo 10s linear infinite, shineEffect 3s infinite;
+      transform-style: preserve-3d;
+    }
+
+    @keyframes rotateYLogo {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+
+    @keyframes shineEffect {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.6); }
+    }
+
+    .claim-text {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-top: 1rem;
+      text-shadow: 0 2px 4px #f0df9d;
+      color: #f4c152;
+    }
+
+    .subtext {
+      font-size: 1.2rem;
+      font-weight: 900;
+      margin-top: 1rem;
+      color: #ffffff;
+    }
+
+    .shine {
+      animation: yellowPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes yellowPulse {
+      0%, 100% { text-shadow: 0 0 4px #FDBB30, 0 0 10px #FDBB30; color: #fff; }
+      50% { text-shadow: 0 0 12px #FDBB30, 0 0 24px #FDBB30; }
+    }
+
+    .fade-loop {
+      animation: fadeLoop 4s ease-in-out infinite;
+    }
+
+    @keyframes fadeLoop {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    section {
+      padding: 6rem 1rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #f0f0f0;
+    }
+
+    section h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #f4c152;
+      margin-bottom: 1rem;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      font-weight: 500;
+      max-width: 800px;
+      margin: 0 auto 1rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      background-color: #FDBB30;
+      border: none;
+      border-radius: 6px;
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover { background-color: #FFD64A; }
+
+    .sample-container {
+      width: 100%;
+      max-width: 900px;
+      height: 480px;
+      margin: 1rem auto;
+      position: relative;
+    }
+
+    .sample-container iframe {
+      position: absolute;
+      border: none;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+
+    footer {
+      background-color: #111;
+      color: #aaa;
+      padding: 2rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      nav.navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .claim-text { font-size: 1.8rem; }
+      .subtext { font-size: 1rem; }
+      .sample-container { height: 360px; }
+    }
+
+    @media (max-width: 480px) {
+      section h1 { font-size: 1.5rem; }
+      section p { font-size: 1rem; }
+      .claim-text { font-size: 1.5rem; }
+      .sample-container { height: 280px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div style="height: 110px;"></div>
+
+  <nav class="navbar">
+    <div class="logo" onclick="scrollToTop()">
+      <img src="logo.PNG" alt="Close Connect Logo" />
+    </div>
+    <ul class="nav-links">
+      <li><a href="#sample">Sample Folder</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#refund">Refund Policy</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" class="hero-logo">
+    <div class="rotating-container">
+      <img src="chrome.PNG" alt="Chrome Logo" class="rotating-shiny" />
+    </div>
+    <div class="claim-text">
+      Perfection is Achievable . <span class="shine"></span> 
+    </div>
+    <div class="subtext">
+      With The Right <span class="shine">CONNECTION</span> <span class="fade-loop"></span>
+      <span class="fade-loop"></span> <span class="fade-loop">
+    </div>
+  </section>
+
+  <section id="sample">
+    <h1>Your Image Matters</h1>
+    <p>A quality design drives engagement.</p>
+    <div class="sample-container">
+      <iframe 
+        src="https://online.fliphtml5.com/xjxfq/pckb/" 
+        allowfullscreen 
+        loading="lazy"
+      ></iframe>
+    </div>
+  </section>
+
+  <section id="about">
+    <h1>Who We Are</h1>
+    <p>Close Connect is a team of experienced professionals in the print advertising industry. We specialize in helping real estate professionals and small businesses connect with their communities through premium branded presentation folders. We are current expanding our services and will have more marketing tools available to all business people very soon.</p>
+  </section>
+
+  <section id="contact">
+    <h1>Get in Touch</h1>
+    <p><strong>Call Us:</strong> 503‑994‑8631</p>
+    <p><strong>Email:</strong> admin@closeconnectllc.com</p>
+    <p>We’re always reachable via email, but would love a phone conversation. Mon–Fri, 7 am–4 pm PST.</p>
+  </section>
+
+  <section id="refund">
+    <h1>Refund Policy</h1>
+    <p>Refunds are issued as account credit or a payment reversal. For First-Time Purchases, you may request a refund within 14 days of delivery if you are not satisfied with the product and it meets the return conditions.</p>
+    <p>All refunds are subject to review and approval. Return shipping is the responsibility of the customer unless the product is defective or incorrect.</p>
+    <p>For help, contact <strong>admin@closeconnectllc.com</strong> or call <strong>503‑994‑8631</strong>.</p>
+  </section>
+
+  <footer>
+    <p>Let’s work together | Mon–Fri, 7 am–4 pm PST</p>
+    <p>&copy; 2025 Close Connect | <a href="#refund">Refund Policy</a></p>
+  </footer>
+
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
