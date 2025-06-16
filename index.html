@@ -94,7 +94,7 @@
 
     .hero-logo {
       min-height: 100vh;
-      padding: 6rem 1rem 3rem;
+      padding: 3rem 1rem 2rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -247,13 +247,13 @@
 </head>
 <body>
 
-  <div style="height: 110px;"></div>
-
+  <a id="home"></a>
   <nav class="navbar">
-    <div class="logo" onclick="scrollToTop()">
-      <img src="logo.PNG" alt="Close Connect Logo" />
+    <div class="logo">
+      <a href="#home"><img src="logo.PNG" alt="Close Connect Logo" /></a>
     </div>
     <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
       <li><a href="#sample">Sample Folder</a></li>
       <li><a href="#about">About Us</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -261,11 +261,13 @@
     </ul>
   </nav>
 
-  <section id="home" class="hero-logo">
+  <section class="hero-logo">
     <div class="rotating-container">
       <img src="chrome.PNG" alt="Chrome Logo" class="rotating-shiny" />
     </div>
-    <div class="claim-text">Perfection is Achievable . <span class="shine"></span></div>
+    <div class="claim-text">
+      Perfection is Achievable . <span class="shine"></span> 
+    </div>
     <div class="subtext">
       With The Right <span class="shine">CONNECTION</span> <span class="fade-loop"></span>
     </div>
@@ -285,7 +287,7 @@
 
   <section id="about">
     <h1>Who We Are</h1>
-    <p>Close Connect is a team of experienced professionals in the print advertising industry...</p>
+    <p>Close Connect is a team of experienced professionals in the print advertising industry. We specialize in helping real estate professionals and small businesses connect with their communities through premium branded presentation folders. We are currently expanding our services and will have more marketing tools available to all business people very soon.</p>
   </section>
 
   <section id="contact">
@@ -297,7 +299,9 @@
 
   <section id="refund">
     <h1>Refund Policy</h1>
-    <p>Refunds are issued as account credit or a payment reversal...</p>
+    <p>Refunds are issued as account credit or a payment reversal. For First-Time Purchases, you may request a refund within 14 days of delivery if you are not satisfied with the product and it meets the return conditions.</p>
+    <p>All refunds are subject to review and approval. Return shipping is the responsibility of the customer unless the product is defective or incorrect.</p>
+    <p>For help, contact <strong>admin@closeconnectllc.com</strong> or call <strong>503‑994‑8631</strong>.</p>
   </section>
 
   <footer>
@@ -305,13 +309,6 @@
     <p>&copy; 2025 Close Connect | <a href="#refund">Refund Policy</a></p>
   </footer>
 
-  <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
-
 </body>
 </html>
-
 
