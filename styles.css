@@ -1,213 +1,60 @@
-/* Base Styling and Reset */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Outfit', sans-serif;
-  background: #111;
-  color: #f0f0f0;
-  overflow-x: hidden;
-  position: relative;
-}
-
-/* Background Image Animation */
-body::before {
-  content: "";
-  background: url('homes.jpg') no-repeat center center;
-  background-size: cover;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.25;
-  z-index: -2;
-  animation: cinematicPanZoom 60s ease-in-out infinite alternate;
-  filter: blur(2px);
-}
-
-@keyframes cinematicPanZoom {
-  0% { transform: scale(1) translate(0, 0); }
-  100% { transform: scale(1.1) translate(-2%, -2%); }
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Navbar */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 999;
-  background-color: #e2e2e2;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.nav-links a {
-  color: #112a64;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.nav-links a:hover {
-  color: #FDBB30;
-}
-
-.logo img {
-  height: 40px;
-  cursor: pointer;
-}
-
-/* Hero Section */
-.hero-logo {
-  min-height: 100vh;
-  padding-top: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-}
-
-.rotating-container { perspective: 1000px; }
-
-.rotating-shiny {
-  width: 280px;
-  max-width: 80%;
-  animation: rotateYLogo 10s linear infinite, shineEffect 3s infinite;
-  transform-style: preserve-3d;
-}
-
-@keyframes rotateYLogo {
-  from { transform: rotateY(0deg); }
-  to { transform: rotateY(360deg); }
-}
-
-@keyframes shineEffect {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.6); }
-}
-
-.claim-text {
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin-top: 1rem;
-  color: #f4c152;
-  text-shadow: 0 2px 4px #f0df9d;
-}
-
-.subtext {
-  font-size: 1.2rem;
-  font-weight: 900;
-  margin-top: 1rem;
-  color: #ffffff;
-}
-
-.shine {
-  animation: yellowPulse 3s ease-in-out infinite;
-}
-
-@keyframes yellowPulse {
-  0%, 100% { text-shadow: 0 0 4px #FDBB30, 0 0 10px #FDBB30; color: #fff; }
-  50% { text-shadow: 0 0 12px #FDBB30, 0 0 24px #FDBB30; }
-}
-
-/* Sections */
-section {
-  padding: 6rem 1rem 4rem;
-  text-align: center;
-}
-
-section h1 {
-  font-size: 2rem;
-  color: #f4c152;
-  margin-bottom: 1rem;
-}
-
-section p {
-  font-size: 1.1rem;
-  max-width: 800px;
-  margin: 0 auto 1rem;
-}
-
-/* Flipbook */
-.sample-container {
-  width: 100%;
-  max-width: 900px;
-  height: 480px;
-  margin: 1rem auto;
-  position: relative;
-}
-
-.sample-container iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: none;
-  left: 0;
-  top: 0;
-}
-
-/* Footer */
-footer {
-  background-color: #111;
-  color: #aaa;
-  padding: 2rem;
-  font-size: 0.9rem;
-  text-align: center;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .navbar {
+/* --- Responsive Enhancements --- */
+@media (max-width: 1024px) {
+  nav.navbar {
     flex-direction: column;
     align-items: flex-start;
+    padding: 1rem;
   }
 
   .nav-links {
     flex-direction: column;
+    align-items: flex-start;
     width: 100%;
+    gap: 0.5rem;
   }
 
-  .claim-text { font-size: 1.8rem; }
-  .subtext { font-size: 1rem; }
-  .sample-container { height: 360px; }
+  .claim-text {
+    font-size: 1.8rem;
+    padding: 0 1rem;
+  }
+
+  .subtext {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .sample-container {
+    height: 360px;
+  }
+
+  section {
+    padding: 4rem 1rem;
+  }
+
+  section h1 {
+    font-size: 1.6rem;
+  }
+
+  section p {
+    font-size: 1rem;
+  }
 }
 
-@media (max-width: 480px) {
-  section h1 { font-size: 1.5rem; }
-  section p { font-size: 1rem; }
-  .claim-text { font-size: 1.5rem; }
-  .sample-container { height: 280px; }
+@media (max-width: 600px) {
+  .claim-text {
+    font-size: 1.5rem;
+  }
+
+  .subtext {
+    font-size: 0.95rem;
+  }
+
+  .sample-container {
+    height: 280px;
+  }
+
+  .rotating-shiny {
+    width: 80%;
+  }
 }
 
