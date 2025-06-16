@@ -1,6 +1,249 @@
-/* --- Responsive Enhancements --- */
+/* Base Reset & Font */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: #111;
+  color: #f0f0f0;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  text-align: center;
+  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cinematic animated background image */
+body::before {
+  content: "";
+  background: url('homes.jpg') no-repeat center center;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  z-index: -2;
+  animation: cinematicPanZoom 60s ease-in-out infinite alternate;
+  transform-origin: center;
+  filter: blur(2px);
+}
+
+/* Radial dark overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes cinematicPanZoom {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.1) translate(-2%, -2%); }
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: #e2e2e2;
+  color: #112a64;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #112a64;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  color: #FDBB30;
+}
+
+.logo img {
+  height: 40px;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero-logo {
+  min-height: 100vh;
+  padding: 6rem 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+}
+
+.rotating-container {
+  perspective: 1000px;
+}
+
+.rotating-shiny {
+  width: 280px;
+  max-width: 80%;
+  animation: rotateYLogo 10s linear infinite, shineEffect 3s infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes rotateYLogo {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+@keyframes shineEffect {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.6); }
+}
+
+.claim-text {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-top: 1rem;
+  text-shadow: 0 2px 4px #f0df9d;
+  color: #f4c152;
+}
+
+.subtext {
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-top: 1rem;
+  color: #ffffff;
+}
+
+.shine {
+  animation: yellowPulse 3s ease-in-out infinite;
+}
+
+@keyframes yellowPulse {
+  0%, 100% {
+    text-shadow: 0 0 4px #FDBB30, 0 0 10px #FDBB30;
+    color: #fff;
+  }
+  50% {
+    text-shadow: 0 0 12px #FDBB30, 0 0 24px #FDBB30;
+  }
+}
+
+.fade-loop {
+  animation: fadeLoop 4s ease-in-out infinite;
+}
+
+@keyframes fadeLoop {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* Sections */
+section {
+  padding: 6rem 1rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #f0f0f0;
+}
+
+section h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #f4c152;
+  margin-bottom: 1rem;
+}
+
+section p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  max-width: 800px;
+  margin: 0 auto 1rem;
+}
+
+/* Button (if used) */
+.btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #FDBB30;
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #FFD64A;
+}
+
+/* Flipbook Container */
+.sample-container {
+  width: 100%;
+  max-width: 900px;
+  height: 480px;
+  margin: 1rem auto;
+  position: relative;
+}
+
+.sample-container iframe {
+  position: absolute;
+  border: none;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+/* Footer */
+footer {
+  background-color: #111;
+  color: #aaa;
+  padding: 2rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Responsive Enhancements */
 @media (max-width: 1024px) {
-  nav.navbar {
+  .navbar {
     flex-direction: column;
     align-items: flex-start;
     padding: 1rem;
